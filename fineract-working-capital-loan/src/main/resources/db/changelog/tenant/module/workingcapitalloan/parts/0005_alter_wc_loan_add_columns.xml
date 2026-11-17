@@ -282,7 +282,7 @@
         <preConditions onFail="MARK_RAN">
             <tableExists tableName="m_wc_loan_note"/>
             <not>
-                <foreignKeyConstraintExists foreignKeyName="FK_m_wc_loan_note_created_by"/>
+                <foreignKeyConstraintExists foreignKeyName="FK_m_wc_loan_note_created_by" foreignKeyTableName="m_wc_loan_note"/>
             </not>
         </preConditions>
         <addForeignKeyConstraint baseColumnNames="created_by" baseTableName="m_wc_loan_note"
@@ -301,7 +301,7 @@
             <tableExists tableName="m_wc_loan"/>
             <columnExists tableName="m_wc_loan" columnName="client_id"/>
             <not>
-                <foreignKeyConstraintExists foreignKeyName="FK_m_wc_loan_client"/>
+                <foreignKeyConstraintExists foreignKeyName="FK_m_wc_loan_client" foreignKeyTableName="m_wc_loan"/>
             </not>
         </preConditions>
         <addForeignKeyConstraint baseColumnNames="client_id" baseTableName="m_wc_loan"
@@ -347,7 +347,7 @@
         <preConditions onFail="MARK_RAN">
             <tableExists tableName="m_wc_loan_payment_allocation_rule"/>
             <not>
-                <foreignKeyConstraintExists foreignKeyName="FK_m_wc_loan_par_created_by"/>
+                <foreignKeyConstraintExists foreignKeyName="FK_m_wc_loan_par_created_by" foreignKeyTableName="m_wc_loan_payment_allocation_rule"/>
             </not>
         </preConditions>
         <addForeignKeyConstraint baseColumnNames="created_by" baseTableName="m_wc_loan_payment_allocation_rule"

@@ -118,7 +118,7 @@
         <preConditions onFail="MARK_RAN">
             <not>
                 <foreignKeyConstraintExists
-                        foreignKeyName="FK_M_DELINQUENCY_PAYMENT_RULE_ON_BUCKET"/>
+                        foreignKeyName="FK_M_DELINQUENCY_PAYMENT_RULE_ON_BUCKET" foreignKeyTableName="m_delinquency_payment_rule"/>
             </not>
         </preConditions>
 

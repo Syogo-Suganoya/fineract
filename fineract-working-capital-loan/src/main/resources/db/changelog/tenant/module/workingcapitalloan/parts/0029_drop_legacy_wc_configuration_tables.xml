@@ -71,14 +71,14 @@
 
     <changeSet id="wclp-0029-2-drop-legacy-loan-product-breach-fk" author="fineract">
         <preConditions onFail="MARK_RAN">
-            <foreignKeyConstraintExists foreignKeyName="FK_m_wc_loan_product_breach"/>
+            <foreignKeyConstraintExists foreignKeyName="FK_m_wc_loan_product_breach" foreignKeyTableName="m_wc_loan_product"/>
         </preConditions>
         <dropForeignKeyConstraint baseTableName="m_wc_loan_product" constraintName="FK_m_wc_loan_product_breach"/>
     </changeSet>
 
     <changeSet id="wclp-0029-3-drop-legacy-loan-breach-fk" author="fineract">
         <preConditions onFail="MARK_RAN">
-            <foreignKeyConstraintExists foreignKeyName="FK_m_wc_loan_breach"/>
+            <foreignKeyConstraintExists foreignKeyName="FK_m_wc_loan_breach" foreignKeyTableName="m_wc_loan"/>
         </preConditions>
         <dropForeignKeyConstraint baseTableName="m_wc_loan" constraintName="FK_m_wc_loan_breach"/>
     </changeSet>

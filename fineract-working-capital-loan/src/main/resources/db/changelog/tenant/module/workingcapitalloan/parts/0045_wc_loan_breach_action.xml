@@ -94,7 +94,7 @@
         <preConditions onFail="MARK_RAN">
             <tableExists tableName="m_wc_loan_breach_action"/>
             <not>
-                <foreignKeyConstraintExists foreignKeyName="FK_wc_loan_breach_action_loan"/>
+                <foreignKeyConstraintExists foreignKeyName="FK_wc_loan_breach_action_loan" foreignKeyTableName="m_wc_loan_breach_action"/>
             </not>
         </preConditions>
         <addForeignKeyConstraint baseColumnNames="wc_loan_id" baseTableName="m_wc_loan_breach_action"

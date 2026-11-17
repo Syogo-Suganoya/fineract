@@ -190,8 +190,8 @@
         <preConditions onFail="MARK_RAN">
             <and>
                 <tableExists tableName="m_wc_breach_configuration"/>
-                <foreignKeyConstraintExists foreignKeyName="FK_m_wc_loan_product_breach"/>
-                <foreignKeyConstraintExists foreignKeyName="FK_m_wc_loan_breach"/>
+                <foreignKeyConstraintExists foreignKeyName="FK_m_wc_loan_product_breach" foreignKeyTableName="m_wc_loan_product"/>
+                <foreignKeyConstraintExists foreignKeyName="FK_m_wc_loan_breach" foreignKeyTableName="m_wc_loan"/>
             </and>
         </preConditions>
         <dropForeignKeyConstraint baseTableName="m_wc_loan_product" constraintName="FK_m_wc_loan_product_breach"/>
