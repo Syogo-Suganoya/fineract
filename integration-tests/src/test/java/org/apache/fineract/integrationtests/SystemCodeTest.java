@@ -44,6 +44,21 @@ import org.junit.jupiter.api.Test;
  */
 public class SystemCodeTest extends FeignIntegrationTest {
 
+    @Test
+    public void testRetrieveCodeByName() {
+        final String codeName = Utils.uniqueRandomStringGenerator("CODE_BY_NAME_", 6);
+        final Long createResponseId = createCode(codeName);
+
+        final GetCodesResponse code = ok(() -> fineractClient().codes().retrieveOneCodeByName(codeName));
+        assertEquals(createResponseId, code.getId(), "Verify value of codeId");
+        assertEquals(codeName, code.getName(), "Verify code name");
+        assertEquals(false, code.getSystemDefined(), "Verify system defined is false");
+
+        ok(() -> fineractClient().codes().deleteCode(createResponseId));
+        final CallFailedRuntimeException deletedCode = fail(() -> fineractClient().codes().retrieveOneCodeByName(codeName));
+        assertEquals(404, deletedCode.getStatus(), "Verify code no longer exists");
+    }
+
     // @Ignore()
     @Test
     // scenario 57, 58, 59, 60
