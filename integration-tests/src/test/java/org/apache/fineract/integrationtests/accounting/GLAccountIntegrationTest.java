@@ -26,6 +26,7 @@ import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.Month;
 import java.util.Calendar;
+import java.util.List;
 import org.apache.fineract.accounting.glaccount.domain.GLAccountType;
 import org.apache.fineract.client.feign.util.CallFailedRuntimeException;
 import org.apache.fineract.client.models.GetGLAccountsResponse;
@@ -150,6 +151,16 @@ public class GLAccountIntegrationTest extends FeignLoanTestBase {
             assertEquals(403, exception.getStatus());
             assertTrue(exception.getMessage().contains("error.msg.glaccount.glcode.invalid.delete.transactions.logged"));
         });
+    }
+
+    @Test
+    public void testRetrieveAllGLAccountsWithRunningBalance() {
+        String uniqueString = Utils.uniqueRandomStringGenerator("UNIQUE_FEE_INCOME" + Calendar.getInstance().getTimeInMillis(), 5);
+        final PostGLAccountsResponse newAccount = createGLAccount(uniqueString);
+
+        final List<GetGLAccountsResponse> accounts = accountHelper.retrieveAllGLAccountsWithRunningBalance();
+
+        assertTrue(accounts.stream().anyMatch(account -> newAccount.getResourceId().equals(account.getId())));
     }
 
     private PostGLAccountsResponse createGLAccount(String uniqueString) {
